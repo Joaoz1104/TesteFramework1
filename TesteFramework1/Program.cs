@@ -10,14 +10,14 @@ namespace TesteFramework1
     {
         static void Main(string[] args)
         {
+            FileStream Fs = new FileStream("c://pdf/Relatório.pdf", FileMode.Create);
             Document doc = new Document(PageSize.A4);
-            doc.SetMargins(3, 2, 3, 2);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(
-                Directory.GetCurrentDirectory() + "\nRelatório.pdf", FileMode.Create));
+            doc.SetMargins(1, 2, 3, 2);
+            PdfWriter writer = PdfWriter.GetInstance(doc, Fs);
             doc.Open();
-            PdfPTable table = new PdfPTable(7);
+            PdfPTable table = new PdfPTable(8);
 
-            Font fonte = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 22);
+            Font fonte = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 12);
 
             Paragraph coluna1 = new Paragraph("Cod", fonte);
             Paragraph coluna2 = new Paragraph("Nome", fonte);
@@ -59,7 +59,7 @@ namespace TesteFramework1
 
             Relatorio produto1 = new Relatorio();
             produto1.Cod = 1;
-            produto1.Nome = "Computador";
+            produto1.Nome = "Laptop";
             produto1.Descricao = "61";
             produto1.Qtd = 300;
             produto1.Marca = "Microsoft";
